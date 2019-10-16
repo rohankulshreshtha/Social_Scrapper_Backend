@@ -1,0 +1,11 @@
+{
+  "name": "social_scrapper_backend",
+  "version": "1.0.0",
+  "description": "backend for social scrapper",
+  "main": "server.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "author": "Rohan Kulshreshtha",
+  "license": "ISC"
+}
