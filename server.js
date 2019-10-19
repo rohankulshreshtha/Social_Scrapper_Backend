@@ -12,7 +12,7 @@ var app = express();
 var is_production = settings.is_production;
 
 // setup the routes
-app.use('/', scrape);
+app.use('/scrape', scrape);
 app.use(express.static(__dirname + '/public'));
 
 if (!is_production) {
@@ -31,7 +31,7 @@ app.use((req, res, next) => {
 // development error handler
 if (!is_production) {
   app.use(function(err, req, res, next) {
-    console.log(err.stack);
+    console.log(err);
 
     res.status(err.status || 500);
 
@@ -45,7 +45,7 @@ if (!is_production) {
 
 app.use(function(err, req, res, next) {
   res.status(err.status || 500);
-  res.json({'errors': {
+  res.json({'error': {
     message: err.message,
     error: {}
   }});
