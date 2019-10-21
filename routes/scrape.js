@@ -23,7 +23,7 @@ router.get('/twitter',function(req,res)
         error : 'internal server error'
       });
     }
-    res.send({'status':'OK'});
+    res.send({'data':res_obj});
   });
 
 });
@@ -45,7 +45,7 @@ router.get('/instagram',function(req,res)
         error : 'internal server error'
       });
     }
-    res.send({'status':'OK'});
+    res.send({'data':res_obj});
   });
 
 });
@@ -67,7 +67,7 @@ router.get('/wikipedia',function(req,res)
         error : 'internal server error'
       });
     }
-    res.send({'status':'OK'});
+    res.send({'data':res_obj});
   });
 
 });
