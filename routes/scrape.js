@@ -8,13 +8,13 @@ var wiki = require('../controller/wiki');
 
 router.get('/twitter',function(req,res)
 {
-  if(false) {
+  if(!req.query.name) {
     res.statusCode = 401;
     return res.json({
       error: 'bad request'
     });
   }
-  twitter.scrape_twitter('random name',function(res_obj){
+  twitter.scrape_twitter(req.query.name,function(res_obj){
     //check
     if (res_obj.error) {
       console.error(err);
@@ -30,13 +30,13 @@ router.get('/twitter',function(req,res)
 
 router.get('/instagram',function(req,res)
 {
-  if(false) {
+  if(!req.query.name) {
     res.statusCode = 401;
     return res.json({
       error: 'bad request'
     });
   }
-  insta.scrape_insta('random name',function(res_obj){
+  insta.scrape_insta(req.query.name,function(res_obj){
     //check
     if (res_obj.error) {
       console.error(err);
@@ -52,13 +52,13 @@ router.get('/instagram',function(req,res)
 
 router.get('/wikipedia',function(req,res)
 {
-  if(false) {
+  if(!req.query.name) {
     res.statusCode = 401;
     return res.json({
       error: 'bad request'
     });
   }
-  wiki.scrape_wiki('random name',function(res_obj){
+  wiki.scrape_wiki(req.query.name,function(res_obj){
     //check
     if (res_obj.error) {
       console.error(err);
@@ -74,7 +74,7 @@ router.get('/wikipedia',function(req,res)
 
 router.get('/combined',function(req,res)
 {
-  if(false) {
+  if(!req.query.name) {
     res.statusCode = 401;
     return res.json({
       error: 'bad request'
@@ -98,13 +98,13 @@ router.get('/combined',function(req,res)
     final_res_obj[param] = res_obj;
     count++;
     if(count === total) {
-      console.log(final_res_obj);
-      res.send({'status':'OK'});
+      //console.log(final_res_obj);
+      res.send(final_res_obj);
     }
   }
-  twitter.scrape_twitter('random name',function(res_obj){callback_util('twitter',res_obj);});
-  insta.scrape_insta('random name',function(res_obj){callback_util('insta',res_obj);});
-  wiki.scrape_wiki('random name',function(res_obj){callback_util('wiki',res_obj);});
+  twitter.scrape_twitter(req.query.name,function(res_obj){callback_util('twitter',res_obj);});
+  insta.scrape_insta(req.query.name,function(res_obj){callback_util('insta',res_obj);});
+  wiki.scrape_wiki(req.query.name,function(res_obj){callback_util('wiki',res_obj);});
 
 
 
