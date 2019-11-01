@@ -7,7 +7,7 @@ var final_cb;
 function scrape_insta(name , cb) {
   console.log('called insta for', name);
   var res_obj = {'name' : 'some insta name'};
-  start();
+  start(name);
   final_cb = cb;
   console.log('test',final_cb);
 }
@@ -15,12 +15,12 @@ function scrape_insta(name , cb) {
 
 
 
-    async function start() {
+    async function start(name) {
         //this.spinner.text = chalk.yellow(`Scraping url: https://www.instagram.com/narendramodi/?hl=en`)
-        browser = await puppeteer.launch()
+        browser = await puppeteer.launch({args: ['--no-sandbox']});
         page = await browser.newPage()
 
-        await page.goto('https://www.google.com/search?q=narendra+modi+instagram');
+        await page.goto('https://www.google.com/search?q='+name.split(' ').join('+')+'+instagram');
         await page.waitForSelector('h3.LC20lb', {timeout: 10000});
         var node = await page.evaluate(() => {
             let elements = document.querySelectorAll('h3.LC20lb')
