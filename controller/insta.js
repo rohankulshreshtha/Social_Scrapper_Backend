@@ -99,12 +99,17 @@ function scrape_insta(name , cb) {
 
     function buildJSON() {
         console.log('called buildjson');
-        var tmp = []
+        var tmp = [];
+        var count = 0;
+        var limit = 20;
         items.forEach(url => {
+          count++;
+          if(count < limit) {
             tmp.push({
                 "thumbnail_src": url,
                 "accessibility_caption": ""
             })
+          }
         })
         //console.log(JSON.stringify(tmp));
         if(final_cb)
