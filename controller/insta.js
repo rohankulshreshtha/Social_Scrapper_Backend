@@ -104,7 +104,7 @@ function scrape_insta(name , cb) {
         var limit = 20;
         items.forEach(url => {
           count++;
-          if(count < limit) {
+          if(count <= limit) {
             tmp.push({
                 "thumbnail_src": url,
                 "accessibility_caption": ""

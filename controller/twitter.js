@@ -15,7 +15,7 @@ function scrape_twitter(name , cb) {
     // If there is no error, proceed
     if(!err){
   		// Initiate your search using the above paramaters
-  		T.get('search/tweets', {q: data[0].screen_name , count: 10}, function(err, data, response) {
+  		T.get('statuses/user_timeline', {screen_name: data[0].screen_name , count: 10}, function(err, data, response) {
   		  // If there is no error, proceed
   		  if(!err){
           if(cb)
