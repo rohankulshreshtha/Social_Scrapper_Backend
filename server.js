@@ -2,6 +2,7 @@ var express = require('express'),
     path = require('path'),
     bodyParser = require('body-parser'),
     settings = require('./config/settings'),
+    cors = require('cors'),
     errorhandler = require('errorhandler');
 
 // require the routes
@@ -14,6 +15,8 @@ var is_production = settings.is_production;
 // setup the routes
 app.use('/scrape', scrape);
 app.use(express.static(__dirname + '/public'));
+
+app.use(cors());
 
 if (!is_production) {
   app.use(errorhandler());
